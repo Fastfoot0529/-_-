@@ -37,7 +37,7 @@ print(num_list[N-1] - num_list[0])
 
 #sort, count 함수는 숫자가 많을 경우 시간이 많이 걸림. 그리고 가장 중요한 것은
 #import sys
-#input = sys.stdin.readline 이 부분이 중요하다. print를 일일이 다 치면 시간에러가 나다.
+#input = sys.stdin.readline 이 부분이 중요하다. print를 일일이 다 치면 시간에러가 난다.
 #그리고 num_list.extend([i - 4000] * lst[i]) extend를 사용하면 이중 리스트가
 #생기지 않는 것 같다.
 #이제 [0] * ~~ 잘 쓸 수 있을 것 같다.
