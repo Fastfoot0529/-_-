@@ -1,0 +1,15 @@
+#7568
+N = int(input())
+a_list =[]
+sc_list = []
+An_list=[]
+for _ in range(N):
+    K = list(map(int, input().split()))
+    a_list.append(K)
+for i in range(N):
+    score = 0
+    for k in range(N):
+        if a_list[i][0] < a_list[k][0] and a_list[i][1] < a_list[k][1]:
+            score += 1
+    sc_list.append(score+1)
+print(*sc_list)
