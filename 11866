@@ -1,0 +1,16 @@
+#11866
+N , K = map(int, input().split())
+numbers =[]
+Answer = []
+for i in range(1,N+1):
+    numbers.append(i)
+i = K - 1
+while len(numbers) > 0:
+    if i > len(numbers)-1:
+        i = i - len(numbers)
+        continue
+    removed_element = numbers.pop(i)
+    Answer.append(removed_element)
+    i = i + K -1
+formatted_string = ', '.join(map(str, Answer))
+print(f"<{formatted_string}>")
