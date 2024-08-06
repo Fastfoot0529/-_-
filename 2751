@@ -1,0 +1,15 @@
+#2751
+#import sys
+#input = sys.stdin.readline 주피터에서 이거 실행하면 렉이걸리네 ;;
+
+K = int(input())
+lst = [0] * 2000001
+
+for _ in range(K):
+    num = int(input())
+    lst[num+1000000] += 1
+
+for i in range(2000001):
+    if lst[i] > 0 :
+        for j in range(lst[i]):
+            print(i-1000000)
