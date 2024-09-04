@@ -1,0 +1,37 @@
+#1018
+N, M = map(int, input().split())
+chess = []
+ans = []
+for _ in range(N):
+    lst = list(input())
+    chess.append(lst)
+for a in range(N-7):
+    for b in range(M-7):
+        CB = 0
+        CW = 0
+        for i in range(a,a+8):
+            for k in range(b,b+8):
+                if (i+1)%2 != 0 and (k+1)%2 != 0 and chess[i][k] != 'B' :
+                    CB +=1
+                elif (i+1)%2 != 0 and (k+1)%2 == 0 and chess[i][k] != 'W':
+                    CB +=1
+                elif (i+1)%2 == 0 and (k+1)%2 != 0 and chess[i][k] != 'W':
+                    CB +=1
+                elif (i+1)%2 == 0 and (k+1)%2 == 0 and chess[i][k] != 'B':
+                    CB +=1
+        ans.append(CB)
+        for i in range(a,a+8):
+            for k in range(b,b+8):
+                if (i+1)%2 != 0 and (k+1)%2 != 0 and chess[i][k] != 'W' :
+                    CW +=1
+                elif (i+1)%2 != 0 and (k+1)%2 == 0 and chess[i][k] != 'B':
+                    CW +=1
+                elif (i+1)%2 == 0 and (k+1)%2 != 0 and chess[i][k] != 'B':
+                    CW +=1
+                elif (i+1)%2 == 0 and (k+1)%2 == 0 and chess[i][k] != 'W':
+                    CW +=1
+        ans.append(CW)
+print(min(ans))
+
+#문제를 너무 따로따로 생각한 듯 한번 체크할 때 둘 다 확인할 수 있는데 두 번이나 전체 체크를 하게 했음. 그리고 완성과 효율화는 별게로 생각하고 만들고 효율화 생각해야할 듯 그리고 좌표 더해서 짝수나온 거랑 홀수 나온거랑
+#두 개로 쪼개는 것도 가능함 나는 8개나 쪼갬
