@@ -1,0 +1,34 @@
+#10845
+import sys
+input = sys.stdin.readline
+from collections import deque 
+N = int(input())
+num_list =deque([])
+an_list = []
+for _ in range(N):
+    or_list = input().split()
+    if or_list[0] == 'push':
+        num_list.append(int(or_list[1]))
+    elif or_list[0] == 'pop':
+        if len(num_list) == 0:
+            an_list.append(-1)
+        else: an_list.append(num_list.popleft())
+    elif or_list[0] == 'size':
+        an_list.append(len(num_list))
+    elif or_list[0] == 'empty':
+        if len(num_list) == 0:
+            an_list.append(1)
+        else: an_list.append(0)
+    elif or_list[0] == 'front':
+        if len(num_list) == 0:
+            an_list.append(-1)
+        else: an_list.append(num_list[0])
+    elif or_list[0] == 'back':
+        if len(num_list) == 0:
+            an_list.append(-1)
+        else: an_list.append(num_list[-1])
+
+for i in range(len(an_list)):
+    print(an_list[i])
+
+#collection 바로 배운거 써먹어서 기분이 좋다 ㅎ
