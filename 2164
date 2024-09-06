@@ -1,0 +1,28 @@
+#2164
+# 내가 만들었던 코드
+N = int(input())
+lst = []
+for i in range(N):
+    lst.append(i+1)
+while len(lst) >1:
+    lst.remove(lst[0])
+    lst.append(lst[0])
+    lst.remove(lst[0])
+print(lst[0])
+
+
+
+# 챗지피티 코드
+from collections import deque
+
+N = int(input())
+lst = deque(range(1, N + 1))  # 1부터 N까지의 숫자를 deque로 생성
+
+while len(lst) > 1:
+    lst.popleft()  # 첫 번째 요소 제거
+    lst.append(lst.popleft())  # 두 번째 요소를 맨 뒤로 이동
+
+print(lst[0])
+
+# remove, append 는 리스트를 모두 이동시키기 때문에 시간이 오래 걸림
+# deque 자료구조를  사용하면 쉽게 해결가능
