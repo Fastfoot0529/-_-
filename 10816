@@ -1,0 +1,36 @@
+#10816
+#내가 한 풀이
+N = int(input())
+num_list = list(map(int, input().split()))
+M = int(input())
+num_list2 = list(map(int, input().split()))
+
+An = []
+for a in num_list2:
+    ans = 0
+    for b in num_list:
+        if b == a:
+            ans +=1
+    An.append(ans)
+print(*An)
+
+#chatgpt
+from collections import Counter
+import sys
+input = sys.stdin.readline
+# 입력 받기
+N = int(input())
+num_list = list(map(int, input().split()))
+M = int(input())
+num_list2 = list(map(int, input().split()))
+
+# num_list의 빈도 계산
+count_dict = Counter(num_list)
+
+# num_list2의 각 숫자가 num_list에 몇 번 등장하는지 확인
+An = [count_dict[a] if a in count_dict else 0 for a in num_list2]
+
+# 결과 출력
+print(*An)
+
+# collections 모듈에 시간을 단축시키는 클래스가 많아서 익혀두면 좋을 것 같다.
