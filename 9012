@@ -1,5 +1,5 @@
 #9012
-#내가 만든거 
+#내가 만든거  
 import sys
 input = sys.stdin.readline
 N = int(input())
