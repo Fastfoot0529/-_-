@@ -1,0 +1,17 @@
+#1920
+from collections import deque
+from collections import Counter
+N = int(input())
+num_list = deque(input().split())
+M =  int(input())
+num_list2 = deque(input().split())
+count_dict = Counter(num_list)
+
+An =[]
+for a in num_list2:
+    if a in count_dict:
+        An.append(1)
+    else : An.append(0)
+for i in range(len(An)):
+    print(An[i])
+# 전에 사용했던 counter 쓰면 됨
