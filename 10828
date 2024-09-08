@@ -1,0 +1,25 @@
+#10828
+from collections import deque 
+N = int(input())
+stack =deque([])
+an_list = []
+for _ in range(N):
+    or_list = input().split()
+    if or_list[0] == 'push':
+        stack.append(int(or_list[1]))
+    elif or_list[0] == 'pop':
+        if len(stack) == 0:
+            an_list.append(-1)
+        else: an_list.append(stack.pop())
+    elif or_list[0] == 'size':
+        an_list.append(len(stack))
+    elif or_list[0] == 'empty':
+        if len(stack) == 0:
+            an_list.append(1)
+        else: an_list.append(0)
+    elif or_list[0] == 'top':
+        if len(stack) == 0:
+            an_list.append(-1)
+        else: an_list.append(stack[-1])
+for i in range(len(an_list)):
+    print(an_list[i])
