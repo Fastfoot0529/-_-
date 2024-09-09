@@ -1,0 +1,32 @@
+#1874
+from collections import deque
+import sys
+input = sys.stdin.readline
+N = int(input())
+num_list = deque([])
+An = []
+c = 1
+for _ in range(N):
+    goal = int(input())
+    if num_list and num_list[-1] == goal:
+        num_list.pop()
+        An.append("-")
+    if num_list and num_list[-1] > goal:
+        An.append("NO")
+    while c <= goal:
+        num_list.append(c)
+        An.append("+")
+        if num_list[-1] == goal:
+            num_list.pop()
+            An.append("-")
+            c += 1
+            break
+        c +=1
+
+if "NO" in An:
+    print("NO")
+else : 
+    for i in range(len(An)):
+        print(An[i])
+
+# 조금 빡세긴 했는데 다행이 문제를 풀긴 했다. 마지막에 if "NO" in AN 부분 오래 걸릴 줄 알았는데 시간 복잡도가 N^만 아니면 웬만한 건 다 되는 것 같다.
