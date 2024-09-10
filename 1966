@@ -1,0 +1,68 @@
+#1966
+# 내가 한거
+from collections import deque
+import sys
+input = sys.stdin.readline
+T = int(input())
+An =[]
+for _ in range(T):
+    N , M = map(int, input().split())
+    numbers = list(map(int, input().split()))
+    initial_positions = {idx: importance for idx, importance in enumerate(numbers)}
+    in_deque = deque(initial_positions.items())
+    c = 0
+    current_max = max(numbers)
+    while True:
+        if in_deque[0][1] < current_max:
+            in_deque.append(in_deque.popleft())
+        elif in_deque[0][1] == current_max:
+            printed = in_deque.popleft()
+            c += 1
+            if in_deque:
+                current_max = max(importance for _, importance in in_deque)
+            if printed[0] == M:
+                An.append(c)
+                break
+for i in range(len(An)):
+    print(An[i])
+
+#chat_gpt
+from collections import deque
+import sys
+input = sys.stdin.readline
+
+T = int(input())
+An = []
+
+for _ in range(T):
+    N, M = map(int, input().split())
+    numbers = list(map(int, input().split()))
+    
+    # (문서의 위치, 중요도) 쌍을 저장
+    in_deque = deque(enumerate(numbers))
+    
+    # 현재 최대 중요도 값을 추적
+    current_max = max(numbers)
+    
+    c = 0
+    while in_deque:
+        # 왼쪽 끝의 문서 중요도 확인
+        idx, importance = in_deque.popleft()
+        
+        # 현재 중요도가 최대 중요도와 같으면 출력
+        if importance == current_max:
+            c += 1
+            if idx == M:
+                An.append(c)
+                break
+            
+            # 최대 중요도를 가진 문서가 제거되었으므로 새로 최대 중요도를 계산
+            if in_deque:
+                current_max = max(importance for _, importance in in_deque)
+        else:
+            # 중요도가 최대가 아니면 오른쪽으로 이동
+            in_deque.append((idx, importance))
+
+for i in An:
+    print(i)
+# 참 볼 때마다 내가 머리가 단순하지 않고 맨날 복잡하게 생각하는 것 같다. 자력으로 풀어서 다행이긴하지만 참 아쉽다.
