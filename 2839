@@ -1,0 +1,37 @@
+#2839
+import sys
+input = sys.stdin.readline
+N = int(input())
+A = N // 5
+B = N - 5 * A
+C = B % 3
+D = B // 3
+while C > 0 :
+    A -= 1
+    B = N - 5 * A
+    C = B % 3
+    D = B // 3
+    if A < 0:
+        break
+if A <0:
+    print(-1)
+else: print(A+D)
+
+#chatgpt
+N = int(input())
+
+# 5로 나누어 떨어질 때는 바로 출력
+if N % 5 == 0:
+    print(N // 5)
+else:
+    # 최대한 5로 나누고, 나머지가 3으로 나누어떨어지는지 확인
+    for A in range(N // 5, -1, -1):
+        B = N - (5 * A)
+        if B % 3 == 0:
+            print(A + (B // 3))
+            break
+    else:
+        # 5와 3으로 나눌 수 없으면 -1 출력
+        print(-1)
+
+## 확실히 gpt가 한 것이 더 깔끔한 것 같다. 
