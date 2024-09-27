@@ -1,0 +1,35 @@
+#4949
+import sys
+input = sys.stdin.readline
+
+An = []
+while True:
+    sen = input().rstrip()  # 개행 문자를 제거
+    if sen == ".":
+        break
+
+    check = []
+    balanced = True
+    for char in sen:
+        if char == "(" or char == "[":
+            check.append(char)
+        elif char == ")":
+            if not check or check[-1] != "(":
+                balanced = False
+                break
+            check.pop()
+        elif char == "]":
+            if not check or check[-1] != "[":
+                balanced = False
+                break
+            check.pop()
+
+    if balanced and not check:
+        An.append("yes")
+    else:
+        An.append("no")
+
+# 결과 출력
+for result in An:
+    print(result)
+## 문장이나 문자열이 들어가면 개행문자를 제거하는 것이 좋은 것 같다. 그리고 balaced로 True false로 설정해서 굳이 따로 복잡하게 리스트로 조건 만들 필요 없이 조건문을 걸 수 있어 좋은 것 같다.
